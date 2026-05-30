@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deposit – Crick222</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <a href="index.html" style="color:#9ca3af;font-size:1.1rem;padding:6px"><i class="fa fa-arrow-left"></i></a>
+      <a href="index.html" class="logo"><span class="logo-c">C</span>rick<span class="logo-222">222</span></a>
+    </div>
+    <div class="header-right">
+      <div class="wallet"><i class="fa fa-wallet"></i><span class="balance" id="headerBalance">₹0.00</span></div>
+      <button class="user-menu-btn" id="userMenuBtn"><i class="fa fa-chevron-down"></i></button>
+    </div>
+  </header>
+  <div class="user-dropdown" id="userDropdown">
+    <a href="account-statement.html"><i class="fa fa-file-alt"></i> Account Statement</a>
+    <a href="bet-history.html"><i class="fa fa-history"></i> Bet History</a>
+    <a href="change-password.html"><i class="fa fa-lock"></i> Change Password</a>
+    <a href="#" id="logoutBtn"><i class="fa fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <div class="page-container">
+    <div class="page-title"><i class="fa fa-plus-circle"></i> Deposit Funds</div>
+
+    <!-- AMOUNT FORM -->
+    <div class="card">
+      <div class="card-title"><i class="fa fa-indian-rupee-sign"></i> Enter Deposit Amount</div>
+      <div class="form-group">
+        <label class="form-label">Amount (₹)</label>
+        <input type="number" id="depositAmount" class="form-input" placeholder="Min ₹100" min="100" />
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <button class="quick-amt" onclick="setAmt(500)">₹500</button>
+        <button class="quick-amt" onclick="setAmt(1000)">₹1,000</button>
+        <button class="quick-amt" onclick="setAmt(2000)">₹2,000</button>
+        <button class="quick-amt" onclick="setAmt(5000)">₹5,000</button>
+        <button class="quick-amt" onclick="setAmt(10000)">₹10,000</button>
+      </div>
+    </div>
+
+    <!-- BANK DETAILS -->
+    <div class="card">
+      <div class="card-title"><i class="fa fa-building-columns"></i> Company Bank Account</div>
+      <div class="bank-info-row"><span class="bank-info-label">Account Name</span><span class="bank-info-val">CRICK222 GAMING PVT LTD</span></div>
+      <div class="bank-info-row"><span class="bank-info-label">Account Number</span><span class="bank-info-val" style="color:#f59e0b">9876543210123456</span></div>
+      <div class="bank-info-row"><span class="bank-info-label">IFSC Code</span><span class="bank-info-val" style="color:#f59e0b">HDFC0001234</span></div>
+      <div class="bank-info-row"><span class="bank-info-label">Bank Name</span><span class="bank-info-val">HDFC Bank</span></div>
+      <div class="bank-info-row"><span class="bank-info-label">Account Type</span><span class="bank-info-val">Current Account</span></div>
+    </div>
+
+    <!-- UPI -->
+    <div class="card" style="text-align:center">
+      <div class="card-title"><i class="fa fa-qrcode"></i> UPI / Scan & Pay</div>
+      <div class="qr-box">
+        <div>
+          <div style="font-size:2rem">📱</div>
+          <div style="margin-top:6px">Scan QR to Pay</div>
+          <div style="color:#666;font-size:0.65rem;margin-top:4px">crick222@upi</div>
+        </div>
+      </div>
+      <div style="font-size:0.8rem;color:#9ca3af">UPI ID: <strong style="color:#f59e0b">crick222@hdfc</strong></div>
+    </div>
+
+    <!-- UPLOAD SLIP -->
+    <div class="card">
+      <div class="card-title"><i class="fa fa-upload"></i> Upload Transaction Reference Slip</div>
+      <div class="form-group">
+        <label class="form-label">Transaction ID / UTR Number</label>
+        <input type="text" id="utrNumber" class="form-input" placeholder="Enter UTR / Transaction ID" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Upload Screenshot / Slip</label>
+        <label class="upload-label" for="slipFile">
+          <i class="fa fa-cloud-upload-alt"></i> Choose File
+          <input type="file" id="slipFile" accept="image/*,.pdf" style="display:none" onchange="showFileName(this)" />
+        </label>
+        <div id="fileName" style="font-size:0.75rem;color:#9ca3af;margin-top:6px"></div>
+      </div>
+      <button class="btn-full btn-green" onclick="submitDeposit()">
+        <i class="fa fa-paper-plane"></i> SUBMIT DEPOSIT REQUEST
+      </button>
+    </div>
+
+    <!-- HISTORY -->
+    <div class="card">
+      <div class="card-title"><i class="fa fa-clock-rotate-left"></i> Deposit History</div>
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead>
+            <tr><th>Date</th><th>Amount</th><th>UTR</th><th>Status</th></tr>
+          </thead>
+          <tbody id="depositHistoryBody">
+            <tr><td>30 May 2025</td><td>₹2,000</td><td>UTR123456</td><td><span class="status-approved">✓ Approved</span></td></tr>
+            <tr><td>29 May 2025</td><td>₹5,000</td><td>UTR789012</td><td><span class="status-pending">⏳ Pending</span></td></tr>
+            <tr><td>28 May 2025</td><td>₹1,000</td><td>UTR345678</td><td><span class="status-rejected">✗ Rejected</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="bn-item"><i class="fa fa-home"></i><span>Home</span></a>
+    <a href="deposit.html" class="bn-item active"><i class="fa fa-plus-circle"></i><span>Deposit</span></a>
+    <a href="index.html" class="bn-item bn-center"><i class="fa fa-circle-play"></i><span>Live</span></a>
+    <a href="withdrawal.html" class="bn-item"><i class="fa fa-minus-circle"></i><span>Withdraw</span></a>
+    <a href="#" class="bn-item"><i class="fa fa-user"></i><span>Profile</span></a>
+  </nav>
+
+<style>
+.quick-amt {
+  background:#1a1d27;border:1px solid #2d3148;color:#e8e8e8;
+  padding:6px 12px;border-radius:6px;cursor:pointer;font-size:0.78rem;
+  transition:all 0.2s;
+}
+.quick-amt:hover { background:#f59e0b;color:#0f1117;border-color:#f59e0b; }
+.upload-label {
+  display:inline-flex;align-items:center;gap:8px;
+  background:#1a1d27;border:1px dashed #2d3148;
+  border-radius:8px;padding:10px 16px;cursor:pointer;
+  font-size:0.82rem;color:#9ca3af;transition:all 0.2s;
+}
+.upload-label:hover { border-color:#f59e0b;color:#f59e0b; }
+</style>
+<script src="js/app.js"></script>
+<script>
+function setAmt(v) { document.getElementById('depositAmount').value = v; }
+function showFileName(input) {
+  document.getElementById('fileName').textContent = input.files[0]?.name || '';
+}
+function submitDeposit() {
+  const amt = document.getElementById('depositAmount').value;
+  const utr = document.getElementById('utrNumber').value;
+  if (!amt || amt < 100) { alert('Please enter a valid amount (min ₹100)'); return; }
+  if (!utr) { alert('Please enter UTR / Transaction ID'); return; }
+  alert('Deposit request submitted! It will be reviewed within 30 minutes.');
+}
+</script>
+</body>
+</html>

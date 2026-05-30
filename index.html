@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crick222 – Sports & Casino</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="mainHeader">
+    <div class="header-left">
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <i class="fa fa-bars"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <span class="logo-c">C</span>rick<span class="logo-222">222</span>
+      </a>
+    </div>
+    <div class="header-right">
+      <div class="user-info">
+        <i class="fa fa-user-circle"></i>
+        <span class="user-id" id="headerUserId">Guest</span>
+      </div>
+      <div class="wallet">
+        <i class="fa fa-wallet"></i>
+        <span class="balance" id="headerBalance">₹0.00</span>
+      </div>
+      <a href="deposit.html" class="btn btn-deposit">DEPOSIT</a>
+      <a href="withdrawal.html" class="btn btn-withdraw">WITHDRAWAL</a>
+      <button class="user-menu-btn" id="userMenuBtn" aria-label="User Menu">
+        <i class="fa fa-chevron-down"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== USER DROPDOWN MENU ===== -->
+  <div class="user-dropdown" id="userDropdown">
+    <a href="account-statement.html"><i class="fa fa-file-alt"></i> Account Statement</a>
+    <a href="bet-history.html"><i class="fa fa-history"></i> Bet History</a>
+    <a href="unsettled-bet.html"><i class="fa fa-clock"></i> Unsettled Bet</a>
+    <a href="change-password.html"><i class="fa fa-lock"></i> Change Password</a>
+    <a href="#" id="logoutBtn"><i class="fa fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <!-- ===== TIER 1 NAV ===== -->
+  <nav class="nav-tier1">
+    <div class="nav-scroll">
+      <a href="#" class="nav-item active" data-tier1="inplay">INPLAY <span class="badge">12</span></a>
+      <a href="#" class="nav-item" data-tier1="sports">SPORTS</a>
+      <a href="#" class="nav-item" data-tier1="casino">CASINO</a>
+      <a href="#" class="nav-item" data-tier1="sportsbook">SPORTS BOOK</a>
+      <a href="#" class="nav-item" data-tier1="others">OTHERS</a>
+    </div>
+  </nav>
+
+  <!-- ===== TIER 2 NAV ===== -->
+  <nav class="nav-tier2">
+    <div class="nav-scroll">
+      <a href="#" class="nav-item2 active" data-sport="cricket">
+        <img src="assets/icons/cricket.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>CRICKET</span>
+      </a>
+      <a href="#" class="nav-item2" data-sport="football">
+        <img src="assets/icons/football.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>FOOTBALL</span>
+      </a>
+      <a href="#" class="nav-item2" data-sport="tennis">
+        <img src="assets/icons/tennis.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>TENNIS</span>
+      </a>
+      <a href="#" class="nav-item2" data-sport="fantasy">
+        <img src="assets/icons/fantasy.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>FANTASY 11</span>
+      </a>
+      <a href="#" class="nav-item2" data-sport="cockfight">
+        <img src="assets/icons/cockfight.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>COCK FIGHT</span>
+      </a>
+      <a href="#" class="nav-item2" data-sport="horse">
+        <img src="assets/icons/horse.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>HORSE RACING</span>
+      </a>
+      <a href="#" class="nav-item2" data-sport="greyhound">
+        <img src="assets/icons/greyhound.svg" onerror="this.src='assets/icons/fallback.png'" alt="" />
+        <span>GREYHOUND</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== TIER 3 NAV + VIEW BY ===== -->
+  <div class="nav-tier3-bar">
+    <nav class="nav-tier3">
+      <a href="#" class="nav-item3 active">LIVE</a>
+      <a href="#" class="nav-item3">VIRTUAL</a>
+      <a href="#" class="nav-item3">PREMIUM</a>
+    </nav>
+    <div class="view-by">
+      <label>View by:</label>
+      <select id="viewBySelect">
+        <option>Time</option>
+        <option>League</option>
+        <option>Country</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <!-- LIVE BANNER -->
+    <div class="live-banner">
+      <span class="live-dot"></span>
+      <span>LIVE MATCHES IN PROGRESS</span>
+      <span class="live-count">12 Events</span>
+    </div>
+
+    <!-- MATCH CARDS SECTION -->
+    <section class="section-title">
+      <i class="fa fa-cricket-bat-ball"></i> IPL 2025 – Indian Premier League
+      <span class="section-badge">LIVE</span>
+    </section>
+
+    <div class="match-cards" id="matchCards">
+      <!-- Cards injected by JS -->
+    </div>
+
+    <!-- CASINO SECTION -->
+    <section class="section-title casino-title">
+      <i class="fa fa-dice"></i> Casino Games
+    </section>
+
+    <div class="casino-grid" id="casinoGrid">
+      <!-- Casino cards injected by JS -->
+    </div>
+
+  </main>
+
+  <!-- ===== SIDEBAR (Mobile) ===== -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo"><span class="logo-c">C</span>rick<span class="logo-222">222</span></span>
+      <button id="closeSidebar"><i class="fa fa-times"></i></button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><i class="fa fa-home"></i> Home</a>
+      <a href="deposit.html"><i class="fa fa-plus-circle"></i> Deposit</a>
+      <a href="withdrawal.html"><i class="fa fa-minus-circle"></i> Withdrawal</a>
+      <a href="account-statement.html"><i class="fa fa-file-alt"></i> Account Statement</a>
+      <a href="bet-history.html"><i class="fa fa-history"></i> Bet History</a>
+      <a href="unsettled-bet.html"><i class="fa fa-clock"></i> Unsettled Bet</a>
+      <a href="change-password.html"><i class="fa fa-lock"></i> Change Password</a>
+      <a href="#" id="sidebarLogout"><i class="fa fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- ===== BOTTOM NAV (Mobile) ===== -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bn-item active">
+      <i class="fa fa-home"></i><span>Home</span>
+    </a>
+    <a href="deposit.html" class="bn-item">
+      <i class="fa fa-plus-circle"></i><span>Deposit</span>
+    </a>
+    <a href="index.html" class="bn-item bn-center">
+      <i class="fa fa-circle-play"></i><span>Live</span>
+    </a>
+    <a href="withdrawal.html" class="bn-item">
+      <i class="fa fa-minus-circle"></i><span>Withdraw</span>
+    </a>
+    <a href="#" class="bn-item" id="profileBtn">
+      <i class="fa fa-user"></i><span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

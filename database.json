@@ -1,0 +1,144 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "password": "pass123",
+      "balance": 5000,
+      "mobile": "9876543210",
+      "status": "active",
+      "created": "2025-05-01",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "username": "demo",
+      "password": "demo123",
+      "balance": 6000,
+      "mobile": "9123456789",
+      "status": "active",
+      "created": "2025-05-10",
+      "role": "user"
+    },
+    {
+      "id": 1780153635404,
+      "username": "ayush",
+      "password": "111111",
+      "balance": 0,
+      "mobile": "2222222222",
+      "status": "active",
+      "created": "2026-05-30",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "username": "rahul222",
+      "password": "rahul@123",
+      "balance": 3000,
+      "mobile": "9811111111",
+      "status": "active",
+      "created": "2025-05-30",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "username": "priya222",
+      "password": "priya@123",
+      "balance": 2500,
+      "mobile": "9822222222",
+      "status": "active",
+      "created": "2025-05-30",
+      "role": "user"
+    },
+    {
+      "id": 5,
+      "username": "amit222",
+      "password": "amit@123",
+      "balance": 4000,
+      "mobile": "9833333333",
+      "status": "active",
+      "created": "2025-05-30",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "username": "sneha222",
+      "password": "sneha@123",
+      "balance": 1500,
+      "mobile": "9844444444",
+      "status": "active",
+      "created": "2025-05-30",
+      "role": "user"
+    },
+    {
+      "id": 7,
+      "username": "raj222",
+      "password": "raj@123",
+      "balance": 7000,
+      "mobile": "9855555555",
+      "status": "active",
+      "created": "2025-05-30",
+      "role": "user"
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin@222",
+      "role": "admin"
+    }
+  ],
+  "deposits": [
+    {
+      "id": 1,
+      "userId": 1,
+      "username": "user1",
+      "amount": 2000,
+      "utr": "UTR123456",
+      "date": "2025-05-30",
+      "status": "approved"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "username": "demo",
+      "amount": 5000,
+      "utr": "UTR789012",
+      "date": "2025-05-30",
+      "status": "approved"
+    }
+  ],
+  "withdrawals": [
+    {
+      "id": 1,
+      "userId": 1,
+      "username": "user1",
+      "amount": 3000,
+      "accountNo": "XXXX3456",
+      "ifsc": "HDFC0001234",
+      "date": "2025-05-30",
+      "status": "pending"
+    }
+  ],
+  "paymentDetails": {
+    "bank": {
+      "accountName": "CRICK222 GAMING PVT LTD",
+      "accountNumber": "9876543210123456",
+      "ifsc": "HDFC0001234",
+      "bankName": "HDFC Bank",
+      "accountType": "Current Account"
+    },
+    "upi": {
+      "upiId": "crick222@hdfc",
+      "qrNote": "Scan QR to Pay"
+    },
+    "whatsapp": "919534115630"
+  },
+  "settings": {
+    "siteName": "Crick222",
+    "minDeposit": 100,
+    "minWithdrawal": 200,
+    "maintenanceMode": false
+  }
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – Crick222</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ADMIN HEADER -->
+  <header class="admin-header">
+    <div class="header-left">
+      <button class="hamburger" id="adminHamburger"><i class="fa fa-bars"></i></button>
+      <span class="logo"><span class="logo-c">C</span>rick<span class="logo-222">222</span></span>
+      <span class="admin-badge">ADMIN</span>
+    </div>
+    <div class="header-right">
+      <span style="font-size:0.8rem;color:#9ca3af"><i class="fa fa-user-shield" style="color:#ef4444;margin-right:5px"></i>admin</span>
+      <button class="btn btn-red" id="adminLogout"><i class="fa fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <nav class="admin-nav">
+        <a href="#" class="admin-nav-item active" data-tab="overview"><i class="fa fa-chart-line"></i> Overview</a>
+        <a href="#" class="admin-nav-item" data-tab="users"><i class="fa fa-users"></i> Manage Users</a>
+        <a href="#" class="admin-nav-item" data-tab="deposits"><i class="fa fa-plus-circle"></i> Deposit Requests</a>
+        <a href="#" class="admin-nav-item" data-tab="withdrawals"><i class="fa fa-minus-circle"></i> Withdrawal Requests</a>
+        <a href="#" class="admin-nav-item" data-tab="payments"><i class="fa fa-credit-card"></i> Payment Details</a>
+        <a href="#" class="admin-nav-item" data-tab="settings"><i class="fa fa-gear"></i> Settings</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="admin-main" id="adminMain">
+
+      <!-- OVERVIEW TAB -->
+      <div class="admin-tab active" id="tab-overview">
+        <h2 class="admin-page-title"><i class="fa fa-chart-line"></i> Dashboard Overview</h2>
+        <div class="admin-grid">
+          <div class="admin-stat"><div class="admin-stat-val" style="color:#22c55e">₹1,24,500</div><div class="admin-stat-label">Total Deposits Today</div></div>
+          <div class="admin-stat"><div class="admin-stat-val" style="color:#ef4444">₹48,200</div><div class="admin-stat-label">Total Withdrawals Today</div></div>
+          <div class="admin-stat"><div class="admin-stat-val">247</div><div class="admin-stat-label">Active Users</div></div>
+          <div class="admin-stat"><div class="admin-stat-val" style="color:#f59e0b" id="statPending">—</div><div class="admin-stat-label">Pending Requests</div></div>
+          <div class="admin-stat"><div class="admin-stat-val">1,842</div><div class="admin-stat-label">Total Users</div></div>
+          <div class="admin-stat"><div class="admin-stat-val" style="color:#8b5cf6">₹76,300</div><div class="admin-stat-label">Net Profit Today</div></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px">
+          <div class="card">
+            <div class="card-title">Recent Deposits</div>
+            <table class="data-table">
+              <thead><tr><th>User</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>user123</td><td>₹2,000</td><td><span class="status-pending">Pending</span></td></tr>
+                <tr><td>rahul99</td><td>₹5,000</td><td><span class="status-approved">Approved</span></td></tr>
+                <tr><td>priya01</td><td>₹1,000</td><td><span class="status-pending">Pending</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <div class="card-title">Recent Withdrawals</div>
+            <table class="data-table">
+              <thead><tr><th>User</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>amit55</td><td>₹3,000</td><td><span class="status-pending">Pending</span></td></tr>
+                <tr><td>sneha22</td><td>₹1,500</td><td><span class="status-approved">Approved</span></td></tr>
+                <tr><td>raj007</td><td>₹4,000</td><td><span class="status-rejected">Rejected</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- USERS TAB -->
+      <div class="admin-tab" id="tab-users">
+        <h2 class="admin-page-title"><i class="fa fa-users"></i> Manage Users</h2>
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title"><i class="fa fa-user-plus"></i> Create New User ID</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group">
+              <label class="form-label">Username</label>
+              <input type="text" id="newUsername" class="form-input" placeholder="Enter username" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input type="password" id="newPassword" class="form-input" placeholder="Set password" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Initial Balance (₹)</label>
+              <input type="number" id="newBalance" class="form-input" placeholder="0.00" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number</label>
+              <input type="tel" id="newMobile" class="form-input" placeholder="10-digit mobile" />
+            </div>
+          </div>
+          <button class="btn-full btn-green" onclick="createUser()" style="max-width:200px">
+            <i class="fa fa-user-plus"></i> CREATE USER
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="display:flex;justify-content:space-between;align-items:center">
+            <span>All Users</span>
+            <input type="text" placeholder="Search user..." class="form-input" style="width:200px;padding:6px 10px;font-size:0.78rem" oninput="filterUsers(this.value)" />
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table" id="usersTable">
+              <thead><tr><th>#</th><th>Username</th><th>Balance</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEPOSITS TAB -->
+      <div class="admin-tab" id="tab-deposits">
+        <h2 class="admin-page-title"><i class="fa fa-plus-circle"></i> Deposit Requests</h2>
+        <div class="card">
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>User</th><th>Amount</th><th>UTR</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="depositRequestsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- WITHDRAWALS TAB -->
+      <div class="admin-tab" id="tab-withdrawals">
+        <h2 class="admin-page-title"><i class="fa fa-minus-circle"></i> Withdrawal Requests</h2>
+        <div class="card">
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>User</th><th>Amount</th><th>Account</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="withdrawalRequestsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAYMENT DETAILS TAB -->
+      <div class="admin-tab" id="tab-payments">
+        <h2 class="admin-page-title"><i class="fa fa-credit-card"></i> Payment Details</h2>
+        <div class="card">
+          <div class="card-title"><i class="fa fa-building-columns"></i> Bank Account Details</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="form-group"><label class="form-label">Account Name</label><input id="pdAccName"  class="form-input" placeholder="Account holder name" /></div>
+            <div class="form-group"><label class="form-label">Account Number</label><input id="pdAccNo"   class="form-input" placeholder="Account number" /></div>
+            <div class="form-group"><label class="form-label">IFSC Code</label><input id="pdIfsc"     class="form-input" placeholder="IFSC code" /></div>
+            <div class="form-group"><label class="form-label">Bank Name</label><input id="pdBankName" class="form-input" placeholder="Bank name" /></div>
+            <div class="form-group"><label class="form-label">Account Type</label><input id="pdAccType"  class="form-input" placeholder="e.g. Current Account" /></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fa fa-qrcode"></i> UPI Details</div>
+          <div class="form-group"><label class="form-label">UPI ID</label><input id="pdUpiId" class="form-input" placeholder="e.g. crick222@hdfc" /></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fab fa-whatsapp" style="color:#25D366"></i> WhatsApp Number</div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp Number (with country code, no +)</label>
+            <input id="pdWhatsapp" class="form-input" placeholder="e.g. 919534115630" />
+          </div>
+        </div>
+        <button class="btn-full btn-green" style="max-width:220px" onclick="savePaymentDetails()">
+          <i class="fa fa-save"></i> SAVE TO DATABASE
+        </button>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div class="admin-tab" id="tab-settings">
+        <h2 class="admin-page-title"><i class="fa fa-gear"></i> Settings</h2>
+        <div class="card">
+          <div class="card-title">Platform Settings</div>
+          <div class="form-group"><label class="form-label">Minimum Deposit (₹)</label><input id="settMinDeposit" type="number" class="form-input" /></div>
+          <div class="form-group"><label class="form-label">Minimum Withdrawal (₹)</label><input id="settMinWithdrawal" type="number" class="form-input" /></div>
+          <div class="form-group" style="display:flex;align-items:center;gap:10px">
+            <input type="checkbox" id="settMaintenance" style="width:18px;height:18px;cursor:pointer" />
+            <label for="settMaintenance" class="form-label" style="margin:0;cursor:pointer">Enable Maintenance Mode</label>
+          </div>
+          <button class="btn-full btn-green" style="max-width:200px;margin-top:8px" onclick="saveSettings()">
+            <i class="fa fa-save"></i> SAVE SETTINGS
+          </button>
+        </div>
+        <div class="card">
+          <div class="card-title">Change Admin Password</div>
+          <div class="form-group"><label class="form-label">Current Password</label><input type="password" class="form-input" /></div>
+          <div class="form-group"><label class="form-label">New Password</label><input type="password" class="form-input" /></div>
+          <div class="form-group"><label class="form-label">Confirm New Password</label><input type="password" class="form-input" /></div>
+          <button class="btn-full btn-green" style="max-width:200px" onclick="showToast('Password updated!','success')">Update Password</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

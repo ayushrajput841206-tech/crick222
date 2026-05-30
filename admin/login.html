@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login – Crick222</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+<div class="login-page">
+  <div class="login-box">
+    <div class="login-logo" style="color:#ef4444">
+      <i class="fa fa-shield-halved" style="color:#ef4444;margin-right:8px"></i>
+      <span class="logo-c">C</span>rick<span class="logo-222">222</span>
+    </div>
+    <div class="login-title" style="color:#ef4444;font-weight:700">ADMIN PANEL</div>
+    <div class="login-title">Restricted Access Only</div>
+
+    <div id="adminLoginError" style="display:none;background:#ef444422;border:1px solid #ef4444;border-radius:8px;padding:10px;font-size:0.8rem;color:#ef4444;margin-bottom:14px;text-align:center;"></div>
+
+    <form id="adminLoginForm">
+      <div class="form-group">
+        <label class="form-label"><i class="fa fa-user-shield" style="color:#ef4444;margin-right:6px"></i>Admin Username</label>
+        <input type="text" id="adminUsername" class="form-input" placeholder="Admin ID" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label"><i class="fa fa-lock" style="color:#ef4444;margin-right:6px"></i>Password</label>
+        <input type="password" id="adminPassword" class="form-input" placeholder="Admin Password" required />
+      </div>
+      <button type="submit" class="btn-full btn-red" style="margin-top:6px">
+        <i class="fa fa-sign-in-alt"></i> ADMIN LOGIN
+      </button>
+    </form>
+
+    <div style="text-align:center;margin-top:16px">
+      <a href="../login.html" style="font-size:0.75rem;color:#9ca3af">← Back to User Login</a>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/supabase.js"></script>
+<script>
+  if (Auth.getAdmin()) window.location.href = 'dashboard.html';
+
+  document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const username = document.getElementById('adminUsername').value.trim();
+    const password = document.getElementById('adminPassword').value;
+    const errEl    = document.getElementById('adminLoginError');
+    const btn      = this.querySelector('button[type=submit]');
+
+    btn.disabled    = true;
+    btn.textContent = 'Logging in...';
+    errEl.style.display = 'none';
+
+    const res = await Auth.adminLogin(username, password);
+    if (res.success) {
+      Auth.setAdmin(res.admin);
+      window.location.href = 'dashboard.html';
+    } else {
+      errEl.textContent   = res.message || 'Invalid admin credentials.';
+      errEl.style.display = 'block';
+      btn.disabled        = false;
+      btn.innerHTML       = '<i class="fa fa-sign-in-alt"></i> ADMIN LOGIN';
+    }
+  });
+</script>
+</body>
+</html>
